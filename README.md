@@ -1,4 +1,4 @@
-# ScheduleApp
+# CalenderApp
 
 ## Description
 
