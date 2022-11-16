@@ -19,17 +19,33 @@ currentDay.text(day.format("dddd, MMM D, YYYY") + " " + currentTime)
 setTimeout(displayTime, 1000);
 }
 
-
+//function to change color of sections
 function eventPlanner() {
 
+//Grabs the current hour of the day
 var hour = day.hour();
 
-timeSection.each (function checkTime(){
-  var currentHour = parseInt($(timeSection).attr("id"));
+timeSection.each(function() {
 
+//Grabs string off id of current section and turns it into a number element
+  var currentSection = parseInt($(this).attr("id"));
 
+//Changes color of section depending on time
+  if (currentSection < hour) {
+    $(this).addClass('past')
+  } else if (currentSection === hour) {
+    $(this).addClass('present')
+  } else {
+    $(this).addClass('future')
+  }
 })
-
-
-
 }
+
+
+
+
+
+
+
+
+eventPlanner()
