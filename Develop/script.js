@@ -20,7 +20,7 @@ setTimeout(displayTime, 1000);
 }
 
 //function to change color of sections
-function eventPlanner() {
+function timePlanner() {
 
 //Grabs the current hour of the day
 var hour = day.hour();
@@ -32,20 +32,61 @@ timeSection.each(function() {
 
 //Changes color of section depending on time
   if (currentSection < hour) {
-    $(this).addClass('past')
+    $(this).addClass('past');
   } else if (currentSection === hour) {
-    $(this).addClass('present')
+    $(this).addClass('present');
   } else {
-    $(this).addClass('future')
+    $(this).addClass('future');
   }
 })
 }
 
+saveButton.on('click', function(){
+
+  //grabs id of the section as a whole so only text typed 
+  // in said section is set and grabbed from local storage
+  var thisHour = parseInt($(this).parent().attr("id"));
+
+  //grabs text area of section
+  var textArea = $(this).prev().val();
+
+  localStorage.setItem(thisHour, textArea);
+})
+
+
+// grabs local storage for each section upon page reload
+$('#9 .description').val(localStorage.getItem('9'));
+$('#10 .description').val(localStorage.getItem('10'));
+$('#11 .description').val(localStorage.getItem('11'));
+$('#12 .description').val(localStorage.getItem('12'));
+$('#13 .description').val(localStorage.getItem('13'));
+$('#14 .description').val(localStorage.getItem('14'));
+$('#15 .description').val(localStorage.getItem('15'));
+$('#16 .description').val(localStorage.getItem('16'));
+$('#17 .description').val(localStorage.getItem('17'));
+
+// function eventPlanner() {
+
+//   $('.row').each(function() {
+
+//     var userInput = $(this).children('.hour').text();
+
+//     var textOutput = localStorage.getItem(userInput)
+
+//     if (textOutput !== null) {
+//       $(this).children('.description').val(textOutput);
+//     }
+
+
+
+
+//   })
+// }
 
 
 
 
 
-
-
-eventPlanner()
+//calls function for color changing
+timePlanner()
+// eventPlanner()
